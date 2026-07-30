@@ -1,0 +1,6 @@
+{
+  "name": "CH6 Chapel Cleaning",
+  "description": "A dedicated chapel cleaning coordinator for CH6, enabling volunteers to sign up for weekly duties, clean-up slots, and stewardship roles in a clean, unified stitch layout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

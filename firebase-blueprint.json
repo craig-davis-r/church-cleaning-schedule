@@ -1,0 +1,29 @@
+{
+  "entities": {
+    "signup": {
+      "title": "Weekly Signups",
+      "description": "Cleaning task signups for a specific Saturday",
+      "type": "object",
+      "properties": {
+        "chapel-north": { "type": "string" },
+        "chapel-south": { "type": "string" },
+        "chapel-center": { "type": "string" },
+        "entry-glass": { "type": "string" },
+        "bath-sinks": { "type": "string" },
+        "bath-toilets": { "type": "string" },
+        "cultural-spills": { "type": "string" },
+        "hall-north": { "type": "string" },
+        "hall-south": { "type": "string" },
+        "hall-west": { "type": "string" },
+        "bath-kitchen-floors": { "type": "string" },
+        "trash-empty": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/signups/{weekId}": {
+      "schema": "signup",
+      "description": "Weekly cleaning task signups"
+    }
+  }
+}
