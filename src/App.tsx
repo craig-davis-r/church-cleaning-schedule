@@ -4,11 +4,11 @@ import { CLEANING_TASKS, getActiveMonths, getInitialSignupsForWeek } from './dat
 import { 
   Sparkles, Clock, User, Check, Calendar, ArrowLeft, 
   CheckCircle2, Edit3, AlertTriangle, LogOut, Download, 
-  UserCheck, ShieldCheck, Heart, ChevronRight, RefreshCw, Eye,
+  UserCheck, ShieldCheck, Heart, ChevronRight, Eye,
   HelpCircle, Phone
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { collection, onSnapshot, doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { collection, onSnapshot, doc, setDoc } from 'firebase/firestore';
 import { db, OperationType, handleFirestoreError } from './firebase';
 
 export default function App() {
@@ -246,23 +246,6 @@ export default function App() {
     setCurrentPage('summary');
   };
 
-  // Reset/Clear data to default for easy re-testing
-  const handleResetData = async () => {
-    if (confirm("Would you like to reset all tasks in the database to the default signups?")) {
-      try {
-        for (const m of activeMonths) {
-          for (const sat of m.saturdays) {
-            await deleteDoc(doc(db, 'signups', sat.id));
-          }
-        }
-        alert("All task data has been reset to defaults.");
-      } catch (e) {
-        console.error("Failed to reset Firestore data:", e);
-        handleFirestoreError(e, OperationType.DELETE, 'signups');
-      }
-    }
-  };
-
   // Google Calendar integration
   const getGoogleCalendarUrl = (sel: SummarySelection) => {
     const title = encodeURIComponent(`CH6 Chapel Cleaning - ${sel.taskName}`);
@@ -331,16 +314,6 @@ export default function App() {
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
-            <button 
-              onClick={handleResetData}
-              title="Reset task data"
-              className="p-2 rounded-lg hover:bg-surface-container text-on-surface-variant transition-colors flex items-center gap-1.5 text-xs"
-            >
-              <RefreshCw className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Reset</span>
-            </button>
-          </div>
         </div>
       </header>
 
