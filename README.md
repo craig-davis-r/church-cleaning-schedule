@@ -18,3 +18,10 @@ View your app in AI Studio: https://ai.studio/apps/f0b91c9e-e3f0-4f9f-bef6-731b1
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Publish to GitHub Pages
+
+The GitHub Actions workflow deploys the app whenever changes are pushed to `main`.
+For the first deployment, set the repository's Pages source to **GitHub Actions** in **Settings → Pages**.
+
+The published site is available at https://craig-davis-r.github.io/church-cleaning-schedule/.
